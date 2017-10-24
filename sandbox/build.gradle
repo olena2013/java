@@ -2,6 +2,7 @@ group 'com.qa'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+mainClassName="ru.stqa.pft.sandbox"
 
 sourceCompatibility = 1.8
 
@@ -10,5 +11,5 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.testng', name: 'testng', version: '6.11'
 }
