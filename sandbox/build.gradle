@@ -2,9 +2,11 @@ group 'com.qa'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-mainClassName="ru.stqa.pft.sandbox"
+apply plugin:  'application'
+
 
 sourceCompatibility = 1.8
+ mainClassName ="ru.stqa.pft.sandbox"
 
 repositories {
     mavenCentral()
