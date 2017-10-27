@@ -1,2 +1,5 @@
 rootProject.name = 'java'
+include 'addressbook-web-tests'
+include 'addressbook-web-tests'
+include 'addressbook-web-tests'
 
