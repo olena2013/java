@@ -17,15 +17,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper ;
     private GroupHelper groupHelper;
-
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
+    private ContactHelperBase contactHelperBase;
 
 
     public void init() {
@@ -36,6 +28,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         contactHelper = new ContactHelper(wd);
+        contactHelperBase =new ContactHelperBase(wd);
         sessionHelper.login("admin", "secret");
 
     }
@@ -62,5 +55,9 @@ public class ApplicationManager {
 
     public ContactHelper getContactHelper() {
         return contactHelper;
+    }
+
+    public ContactHelperBase getContactHelperBase() {
+        return contactHelperBase;
     }
 }

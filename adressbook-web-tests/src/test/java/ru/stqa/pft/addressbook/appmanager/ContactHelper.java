@@ -9,6 +9,7 @@ public class ContactHelper {
 
 
     public ContactHelper(FirefoxDriver wd) {
+
         this.wd = wd;
     }
 
