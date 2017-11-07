@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -11,7 +12,7 @@ public class GroupHelper extends HelperBase {
         super(wd);
     }
 
-    public  void returnToGroupPage() {
+    public void returnToGroupPage() {
         click(By.linkText("group page"));
     }
 
@@ -19,21 +20,21 @@ public class GroupHelper extends HelperBase {
         click(By.name("submit"));
     }
 
-    public  void fillGroupForm(GroupData groupData) {
+    public void fillGroupForm(GroupData groupData) {
         type(By.name("group_name"), groupData.getName());
         type(By.name("group_header"), groupData.getHeader());
         type(By.name("group_footer"), groupData.getFooter());
     }
 
-    public  void initGroupCreation() {
+    public void initGroupCreation() {
         click(By.name("new"));
     }
 
-    public  void deleteSelectedGroups() {
+    public void deleteSelectedGroups() {
         click(By.name("delete"));
     }
 
-    public  void selectGroup() {
+    public void selectGroup() {
 
         click(By.name("selected[]"));
     }
@@ -46,4 +47,27 @@ public class GroupHelper extends HelperBase {
     public void submitGroupModification() {
         click(By.name("update"));
     }
+
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    private boolean isElementPresent(By locator) {
+        try {
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+
+    }
+
+
 }
