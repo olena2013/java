@@ -1,12 +1,13 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper {
-   private WebDriver wd;
+    private WebDriver wd;
 
 
     public ContactHelper(WebDriver wd) {
@@ -53,4 +54,27 @@ public class ContactHelper {
     }
 
 
+    public void createContact(ContactData contact) {
+        goToAddNewContact();
+        fillNewContactForm(contact);
+        submitNewContact();
+        returnToHomePage();
+
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    private boolean isElementPresent(By locator) {
+        try {
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void goToContactPage() {wd.findElement(By.xpath("//div[@id='content']")).click();
+    }
 }
