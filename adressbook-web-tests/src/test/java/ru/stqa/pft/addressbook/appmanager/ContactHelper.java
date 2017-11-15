@@ -3,8 +3,12 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper {
     private WebDriver wd;
@@ -31,8 +35,6 @@ public class ContactHelper {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-        wd.findElement(By.name("middlename")).click();
-        wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
         wd.findElement(By.name("lastname")).click();
         wd.findElement(By.name("lastname")).clear();
         wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
@@ -75,6 +77,26 @@ public class ContactHelper {
         }
     }
 
-    public void goToContactPage() {wd.findElement(By.xpath("//div[@id='content']")).click();
+    public void goToContactPage() {
+        wd.findElement(By.xpath("//div[@id='content']")).click();
+    }
+
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
+        for (WebElement element : elements) {
+            String lastName = element.findElement(By.xpath("//tr [@name='entry']//td[2]")).getText();
+            String firstName = element.findElement(By.xpath("//tr [@name='entry']//td[3]")).getText();
+            ContactData contact = new ContactData(firstName,lastName, null,
+                    null, null, null,null);
+            contacts.add(contact);
+        }
+        return contacts;
     }
 }
+
+

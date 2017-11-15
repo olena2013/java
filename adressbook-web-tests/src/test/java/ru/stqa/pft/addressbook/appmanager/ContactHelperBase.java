@@ -22,9 +22,8 @@ public class ContactHelperBase {
         }
     }
 
-    public void selectContact() {
-
-        wd.findElement(By.name("selected[]")).click();
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteContact() {
