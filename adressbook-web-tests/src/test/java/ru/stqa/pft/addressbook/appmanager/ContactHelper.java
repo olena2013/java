@@ -89,8 +89,8 @@ public class ContactHelper {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
         for (WebElement element : elements) {
-            String lastName = element.findElement(By.xpath("//tr [@name='entry']//td[2]")).getText();
-            String firstName = element.findElement(By.xpath("//tr [@name='entry']//td[3]")).getText();
+            String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             ContactData contact = new ContactData(id,firstName,lastName, null, null, null, null,null);
             contacts.add(contact);
