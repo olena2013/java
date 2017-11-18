@@ -21,7 +21,7 @@ public class ContactModificationTests extends TestBase{
             app.getContactHelper().createContact(contact);
         }
         app.getContactHelperBase().selectContact(before.size() -1);
-        app.getContactHelperBase().editContact();
+        app.getContactHelperBase().editContact(before.size() -1);
         app.getContactHelperBase().updateContact();
         app.getContactHelper().returnToHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();

@@ -27,7 +27,6 @@ public class ContactHelperBase {
     }
 
     public void deleteContact() {
-
         wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
     }
 
