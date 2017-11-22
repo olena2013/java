@@ -1,45 +1,54 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private  int id;
-    private final String firstname;
-    private final String lastname;
-    private final String company;
-    private final String mobile;
-    private final String email;
-    private final String address2;
-    private final String address1;
+    private  int id = Integer.MAX_VALUE;;
+    private  String firstname;
+    private  String lastname;
+    private  String company;
+    private  String mobile;
+    private  String email;
+    private  String address1;
 
 
     public int getId() {
         return id;
+
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
+
     }
 
-    public ContactData(int id , String firstname, String lastname,
-                       String company, String mobile, String email, String address2, String address1) {
-        this.id = id;
+    public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
-        this.lastname = lastname;
-        this.company = company;
-        this.mobile = mobile;
-        this.email = email;
-        this.address2 = address2;
-        this.address1 = address1;
+        return this;
     }
-    public ContactData(String firstname, String lastname,
-                       String company, String mobile, String email, String address2, String address1) {
-        this.id = Integer.MAX_VALUE;
-        this.firstname = firstname;
+
+    public ContactData withLastname(String lastname) {
         this.lastname = lastname;
+        return this;
+    }
+
+    public ContactData withCompany(String company) {
         this.company = company;
+        return this;
+    }
+
+    public ContactData withMobile(String mobile) {
         this.mobile = mobile;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
         this.email = email;
-        this.address2 = address2;
+        return this;
+    }
+
+    public ContactData withAddress1(String address1) {
         this.address1 = address1;
+        return this;
     }
 
     public String getFirstname() {
@@ -60,10 +69,6 @@ public class ContactData {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getAddress2() {
-        return address2;
     }
 
     public String getAddress1() {
