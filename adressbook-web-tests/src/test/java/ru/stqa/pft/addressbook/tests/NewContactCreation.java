@@ -13,7 +13,7 @@ public class NewContactCreation extends TestBase{
 
     @Test
     public void testNewContactCreation() {
-        app.contact().goTo();
+        app.contact().contactPage();
         Contacts before = app.contact().all();
         ContactData contact = new ContactData().withFirstname("Ivan").withLastname("Ivanov").withCompany("Selenium inc.")
                 .withMobile("723-123-3367").withEmail("ivan@gmail.com").withAddress1("23 A St, Omsk, Russia");

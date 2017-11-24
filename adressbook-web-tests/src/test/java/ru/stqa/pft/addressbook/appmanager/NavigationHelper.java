@@ -16,4 +16,8 @@ public class NavigationHelper extends HelperBase {
 
        click(By.linkText("groups"));
     }
+
+    public void homePage() {
+        wd.findElement(By.xpath("//div[@id='content']")).click();
+    }
 }
