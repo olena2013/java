@@ -1,16 +1,17 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private  int id = Integer.MAX_VALUE;;
-    private  String firstname;
-    private  String lastname;
-    private  String company;
+    private int id = Integer.MAX_VALUE;
+    ;
+    private String firstname;
+    private String lastname;
+    private String company;
     private String homePhone;
     private String workPhone;
-    private  String mobile;
-    private  String email;
-    private  String address1;
-
+    private String mobile;
+    private String allPhones;
+    private String email;
+    private String address1;
 
 
     public int getId() {
@@ -43,12 +44,19 @@ public class ContactData {
         this.mobile = mobile;
         return this;
     }
-    public ContactData withHomePhone (String homePhone) {
+
+    public ContactData withHomePhone(String homePhone) {
         this.homePhone = homePhone;
         return this;
     }
-    public ContactData withWorkPhone (String workPhone) {
+
+    public ContactData withWorkPhone(String workPhone) {
         this.workPhone = workPhone;
+        return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
         return this;
     }
 
@@ -66,9 +74,7 @@ public class ContactData {
         return firstname;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
+    public String getLastname() { return lastname; }
 
     public String getCompany() {
         return company;
@@ -81,6 +87,8 @@ public class ContactData {
     public String getHomePhone() { return homePhone; }
 
     public String getWorkPhone() { return workPhone; }
+
+    public String getAllPhones() { return allPhones; }
 
     public String getEmail() {
         return email;
@@ -109,6 +117,7 @@ public class ContactData {
     public String getAddress1() {
         return address1;
     }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -117,7 +126,6 @@ public class ContactData {
                 ", lastname='" + lastname + '\'' +
                 '}';
     }
-
 
 
 }

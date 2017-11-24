@@ -139,8 +139,8 @@ public class ContactHelper {
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             String allPhones = element.findElement(By.cssSelector("td:nth-child(6)")).getText();
-            String[] phones = allPhones.split("\n");
-            contactCache.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
+            contactCache.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName).
+                    withAllPhones(allPhones));
         }
         return new Contacts(contactCache);
     }
