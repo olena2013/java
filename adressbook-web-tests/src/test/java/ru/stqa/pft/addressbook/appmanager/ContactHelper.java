@@ -57,6 +57,7 @@ public class ContactHelper {
         goToAddNewContact();
         fillNewContactForm(contact);
         submitNewContact();
+        contactCache =null;
         returnToHomePage();
 
     }
@@ -70,9 +71,7 @@ public class ContactHelper {
         }
     }
 
-    public void selectContact(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
+
     public void selectContactById (int id) {
         wd.findElement(By.cssSelector("input[value = '" + id + "']")).click();
     }
@@ -93,6 +92,7 @@ public class ContactHelper {
         selectContactById(contact.getId());
         editContact(contact.getId());
         updateContact();
+        contactCache =null;
         returnToHomePage();
     }
 
@@ -100,6 +100,7 @@ public class ContactHelper {
         selectContactById(contact.getId());
         deleteContact();
         closeAlert();
+        contactCache =null;
         returnToHomePage();
     }
 
@@ -125,17 +126,21 @@ public class ContactHelper {
         wd.findElement(By.xpath("//div[@id='content']")).click();
     }
 
-
+    private Contacts contactCache = null;
     public Contacts all() {
+        if (contactCache != null){
+            return new Contacts(contactCache);
+        }
+        contactCache = new Contacts();
         Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
         for (WebElement element : elements) {
             String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
             String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
+            contactCache.add(new ContactData().withId(id).withFirstname(firstName).withLastname(lastName));
         }
-        return contacts;
+        return new Contacts(contactCache);
     }
 
 
