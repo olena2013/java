@@ -13,4 +13,8 @@ dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '6.11'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.7.1'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+    compile 'com.beust:jcommander:1.72'
+
+
+
 }
