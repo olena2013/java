@@ -34,7 +34,7 @@ public class NewContactCreation extends TestBase {
         return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
 
-    @Test(dataProvider = "validContacts")
+    @Test(dataProvider = "validContactsFromXml")
 public void testNewContactCreation(ContactData contact) {
     app.contact().contactPage();
     Contacts before = app.contact().all();
