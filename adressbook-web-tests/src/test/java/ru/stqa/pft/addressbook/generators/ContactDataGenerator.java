@@ -19,6 +19,7 @@ public class ContactDataGenerator {
 
     @Parameter(names= "-b", description= "Target file" )
     public String file;
+    
 
     public static void main(String[] args) throws IOException {
         ContactDataGenerator generator = new ContactDataGenerator();

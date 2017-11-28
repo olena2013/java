@@ -5,18 +5,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class ContactHelper {
-    private WebDriver wd;
-
-
+public class ContactHelper extends HelperBase{
     public ContactHelper(WebDriver wd) {
-
-        this.wd = wd;
+        super(wd);
     }
+
+
 
     public void goToAddNewContact() {
         wd.findElement(By.linkText("add new")).click();
@@ -30,32 +26,19 @@ public class ContactHelper {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
-    public void fillNewContactForm(ContactData contactData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-        wd.findElement(By.name("lastname")).click();
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-        wd.findElement(By.name("company")).click();
-        wd.findElement(By.name("company")).clear();
-        wd.findElement(By.name("company")).sendKeys(contactData.getCompany());
-        wd.findElement(By.name("address")).click();
-        wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(contactData.getAddress1());
-        wd.findElement(By.name("mobile")).click();
-        wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
-        wd.findElement(By.name("email")).click();
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
-
+    public void fillContactForm(ContactData contactData) {
+        type (By.name("firstname"),contactData.getFirstname());
+        type (By.name("lastname"),contactData.getLastname());
+        type (By.name("company"),contactData.getCompany());
+        type (By.name("address"),contactData.getAddress1());
+        type (By.name("mobile"),contactData.getMobile());
+        type (By.name("email"),contactData.getEmail());
     }
 
 
     public void create(ContactData contact) {
         goToAddNewContact();
-        fillNewContactForm(contact);
+        fillContactForm(contact);
         submitNewContact();
         contactCache =null;
         returnToHomePage();
