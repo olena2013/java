@@ -144,12 +144,6 @@ public class ContactData {
         return email;
     }
 
-    public String getEmail2() { return email2; }
-
-    public String getEmail3() { return email3; }
-
-    public String getAllEmails() { return allEmails; }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -169,6 +163,12 @@ public class ContactData {
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
+
+    public String getEmail2() { return email2; }
+
+    public String getEmail3() { return email3; }
+
+    public String getAllEmails() { return allEmails; }
 
     public String getAddress1() {
         return address1;
